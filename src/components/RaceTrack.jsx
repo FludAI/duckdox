@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Confetti from 'react-confetti';
 
-// Helper function to shade colors
+// Custom color adjuster function to make it look a little nicer
 const shadeColor = (color, percent) => {
   const num = parseInt(color.replace('#', ''), 16);
   const amt = Math.round(2.55 * percent);
@@ -11,7 +11,7 @@ const shadeColor = (color, percent) => {
   return `#${(1 << 24 | (R < 255 ? R < 1 ? 0 : R : 255) << 16 | (G < 255 ? G < 1 ? 0 : G : 255) << 8 | (B < 255 ? B < 1 ? 0 : B : 255)).toString(16).slice(1)}`;
 };
 
-// TypeWriter component
+// Fun typewriter-style text animation to increase engagement for younger users
 const TypewriterText = ({ text, clueText, index }) => {
   const [displayedText, setDisplayedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -390,7 +390,7 @@ const DuckPond = () => {
         )
       ))}
 
-      {/* Results and Pond Visualization */}
+      {/* Show Result With an Attractive Pond Display */}
       {showResults && (
         <div>
           <div className="mt-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 border-2 border-blue-600/30 shadow-lg">
@@ -436,7 +436,7 @@ const DuckPond = () => {
                 fillOpacity="0.5"
               />
               
-              {/* Heart Path for Matches */}
+              {/* Heart Path Makes for Happy Matches */}
               {pairs.length > 0 && (
                 <path
                   d={Array.from({ length: 50 }, (_, i) => {
@@ -452,7 +452,7 @@ const DuckPond = () => {
                 />
               )}
               
-              {/* Ducks */}
+              {/* Attempt at Cute Ducks */}
               {ducks.map((duck, index) => {
                 const isPaired = pairs.some(pair => 
                   pair.some(d => d.id === duck.id)
@@ -483,7 +483,7 @@ const DuckPond = () => {
                 );
               })}
 
-              {/* Results Display */}
+              {/* Show Results */}
               {showGuessAnimation && (
                 <g transform={`translate(${centerX},${centerY})`}>
                   <text className="text-2xl font-bold text-blue-600 text-center" y="-20">
@@ -498,7 +498,7 @@ const DuckPond = () => {
                 </g>
               )}
 
-              {/* Prize Animation */}
+              {/* Fun Prize Animation If 50.7 Guessed or Known*/}
               {showPrize && (
                 <g transform={`translate(${centerX},${centerY})`}>
                   <text className="text-3xl font-bold text-yellow-500 text-center animate-bounce" y="0">
@@ -509,7 +509,7 @@ const DuckPond = () => {
             </svg>
           </div>
 
-          {/* Results Card */}
+          {/* Display Results on Attractive Card */}
           <div className="mt-8 bg-white rounded-xl p-6 border border-slate-200 shadow-lg">
             <h2 className="text-2xl font-bold text-blue-900 mb-4">Results</h2>
             <div className="text-lg space-y-2">
@@ -520,7 +520,7 @@ const DuckPond = () => {
               </p>
             </div>
 
-            {/* Matching Pairs */}
+            {/* Show The Matching Pairs */}
             {pairs.length > 0 && (
               <div className="mt-6 bg-blue-50 rounded-lg p-4">
                 <h3 className="text-lg font-semibold mb-2">Matching Pairs:</h3>
@@ -533,7 +533,16 @@ const DuckPond = () => {
                 </ul>
               </div>
             )}
-
+{/* Link to Presidential Experiment */}
+<div className="mt-8 text-center">
+  <p className="text-lg text-blue-900 mb-4">Ready for more birthday paradox fun?</p>
+  <a
+    href="/presidential-experiment"
+    className="inline-block px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white text-lg font-semibold rounded-lg shadow-md hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200"
+  >
+    Try the Presidential Experiment
+  </a>
+</div>
             {/* Fun Fact */}
             <div className="mt-6">
               <h3 className="text-lg font-semibold text-blue-900 mb-2">Fun Fact!</h3>
@@ -545,7 +554,7 @@ const DuckPond = () => {
             </div>
           </div>
 
-          {/* Prize Display */}
+          {/* Display Prize for Those That Know or Lean 50.7*/}
           {showPrize && (
             <div className="text-5xl font-extrabold text-center mt-8 text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 animate-bounce">
               🎉 Congratulations! You're a Duck Pond Pro! 🦆
